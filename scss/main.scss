@@ -1,0 +1,76 @@
+@import 'mixins';
+
+$cell-size: 100px;
+$mark-size: $cell-size * 0.9;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1f1b24;
+  color: whitesmoke;
+  width: 80%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px;
+}
+
+section.score {
+  h3 {
+    margin: 10px;
+    font-size: 25px;
+  }
+}
+
+section.board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+  justify-items: center;
+
+  .cell {
+    height: $cell-size;
+    width: $cell-size;
+    background-color: #1f1b24;
+    border: 2px solid whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // remove top side border
+    @include topSide;
+    // remove right side border
+    @include rightSide;
+    // remove bottom side border
+    @include bottomSide;
+    // remove left side border
+    @include leftSide;
+
+    &.x::before {
+      @include xSign(45deg);
+    }
+
+    &.x::after {
+      @include xSign(-45deg);
+      margin-left: -7px;
+    }
+
+    &.o::before {
+      content: '';
+      width: $mark-size;
+      height: $mark-size;
+      border-radius: 100%;
+      border: $mark-size * 0.1 solid aliceblue;
+      // background-color: #fff;
+    }
+  }
+}

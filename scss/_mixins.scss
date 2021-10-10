@@ -1,0 +1,39 @@
+@mixin topSide {
+  &:first-child,
+  &:nth-child(2),
+  &:nth-child(3) {
+    border-top: none;
+  }
+}
+
+@mixin rightSide {
+  &:nth-child(3),
+  &:nth-child(6),
+  &:nth-child(9) {
+    border-right: none;
+  }
+}
+
+@mixin bottomSide {
+  &:nth-child(7),
+  &:nth-child(8),
+  &:nth-child(9) {
+    border-bottom: none;
+  }
+}
+
+@mixin leftSide {
+  &:first-child,
+  &:nth-child(4),
+  &:nth-child(7) {
+    border-left: none;
+  }
+}
+
+@mixin xSign($rotate: 0) {
+  content: '';
+  width: $mark-size * 0.1;
+  height: $mark-size;
+  background-color: aliceblue;
+  transform: rotate($rotate);
+}
